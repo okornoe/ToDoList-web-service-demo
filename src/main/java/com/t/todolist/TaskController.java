@@ -1,8 +1,6 @@
 package com.t.todolist;
 
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -18,5 +16,10 @@ public class TaskController {
     @PostMapping(path = "/tasks")
     public void addTask(@RequestBody Task task) {
         tasks.add(task);
+    }
+
+    @GetMapping(path = "/tasks/{id}")
+    public Task getTask(@PathVariable int id) {
+        return tasks.get(id - 1);
     }
 }
